@@ -14,6 +14,10 @@ annoying_function():
     does something
     print("YAK YAK YAK YAK")
     returns something
+    
+a = annoying_function()
+print(a)
+>>> something
 ```
         
 As a context manager:
@@ -29,26 +33,30 @@ annoying_function():
     
 with shutup:
     return_value = annoying_function()
+    
+print(return_value)
+>>>something
 ```    
+*Shutup does not affect return values, it just puts a muzzle on the console.*
 
 You can also mute a chunk of code:
         
 ```python
 from shutup import mute, unmute
 
-annoying_function():
-    print("DOING SOMETHING HYUK HYUK")
-    does something
-    print("YAK YAK YAK YAK")
-    returns something
-  
+
 print("Hi, I have something to tell you:")
 mute()
-a = annoying_function()
-print(a * 1000)
+print("DOING SOMETHING HYUK HYUK")
+does something
+print("YAK YAK YAK YAK")
+print("yak yak yak" * 1000)
 unmute()
 print("Hi, I'm unmuted!")
+
+
 ```
+
 
 ####WARNINGS:
 
