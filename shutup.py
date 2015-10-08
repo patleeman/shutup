@@ -8,14 +8,28 @@ class ShutUpWrite(object):
     def write(self, text):
         pass
 
+# with use case i.e.
+# with shutup:
+#     run some code
 @contextlib.contextmanager
 def shutup_context():
     stdout_save = sys.stdout
     sys.stdout= ShutUpWrite()
-    yield
-    sys.stdout = stdout_save
+    try:
+        yield
+    finally:
+        sys.stdout = stdout_save
 
-def shutup_fn(fn):
+# decorator use case i.e.
+# @shutup
+# def some_function():
+def shutup_decorator(fn):
+    def new_fn():
+        return shutup_basic(fn)
+    return(new_fn)
+
+# wrapper use case i.e. shutup(some_function)
+def shutup_basic(fn):
     stdout_save = sys.stdout
     sys.stdout= ShutUpWrite()
     output = fn()
@@ -24,8 +38,9 @@ def shutup_fn(fn):
 
 def shutup(fn=None):
     if fn is None:
+        print("FN IS NONE - Running with context manager")
         return shutup_context()
-    elif fn is not None:
-        return shutup_fn(fn)
-
-shutup = shutup()
+    else:
+        print("FN IS NOT NONE - Running as decorator")
+        decorator = shutup_decorator(fn)
+        return decorator
