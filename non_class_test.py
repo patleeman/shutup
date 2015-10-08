@@ -1,5 +1,5 @@
 import sys
-import shutup_class as shutup
+import shutup
 
 print("testing context manager")
 def annoying():
@@ -21,3 +21,4 @@ def annoying_decorated():
 
 value2 = annoying_decorated()
 print(value2)
+__author__ = 'patrick'
