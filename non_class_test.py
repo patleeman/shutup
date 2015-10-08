@@ -7,7 +7,7 @@ def annoying():
     sys.stdout.write("Blah Blah Blah")
     return 2 + 2
 
-with shutup.shutup():
+with shutup.shutup:
     value1 = annoying()
 print(value1)
 
@@ -21,4 +21,5 @@ def annoying_decorated():
 
 value2 = annoying_decorated()
 print(value2)
-__author__ = 'patrick'
+
+

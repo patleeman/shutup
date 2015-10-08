@@ -1,18 +1,22 @@
-# Ripped from http://stackoverflow.com/questions/2828953/silence-the-stdout-of-a-function-in-python-without-trashing-sys-stdout-and-resto
-
 import sys
 import contextlib
 
-# Mock sys.stdout object with a negated write method.
+
 class ShutUpWrite(object):
+    """
+    Mock sys.stdout object with a nuked write method.  Probably not healthy.
+    """
     def write(self, text):
         pass
 
-# with use case i.e.
-# with shutup:
-#     run some code
+
 @contextlib.contextmanager
 def shutup_context():
+    """
+    Context manager use case.
+    with shutup:
+        run some code
+    """
     stdout_save = sys.stdout
     sys.stdout= ShutUpWrite()
     try:
@@ -20,27 +24,51 @@ def shutup_context():
     finally:
         sys.stdout = stdout_save
 
-# decorator use case i.e.
-# @shutup
-# def some_function():
+
 def shutup_decorator(fn):
+    """
+    decorator use case
+    @shutup
+    def some_function():
+        do some stuff
+    """
     def new_fn():
-        return shutup_basic(fn)
+        stdout_save = sys.stdout
+        sys.stdout= ShutUpWrite()
+        output = fn()
+        sys.stdout = stdout_save
+        return(output)
     return(new_fn)
 
-# wrapper use case i.e. shutup(some_function)
-def shutup_basic(fn):
-    stdout_save = sys.stdout
-    sys.stdout= ShutUpWrite()
-    output = fn()
-    sys.stdout = stdout_save
-    return(output)
 
 def shutup(fn=None):
+    """
+    Determines whether or not shutup is being used as a a decorator or as a
+    context manager and directs appropriately.
+    """
     if fn is None:
-        print("FN IS NONE - Running with context manager")
         return shutup_context()
     else:
-        print("FN IS NOT NONE - Running as decorator")
         decorator = shutup_decorator(fn)
         return decorator
+
+shutup = shutup()
+
+
+# Oh yeah, suck on my global.
+stdout_save = sys.stdout
+
+def mute():
+    """
+    Mutes... fucking... everything.
+    """
+    sys.stdout= ShutUpWrite()
+    return True  # why not?
+
+def unmute():
+    """
+    I hope this works.
+    """
+    sys.stdout = stdout_save
+    return True  # momma always said to give back
+

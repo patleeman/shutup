@@ -1,5 +1,6 @@
 import sys
-import shutup_class as shutup
+
+from old_crap import shutup_class as shutup
 
 print("testing context manager")
 def annoying():
@@ -13,7 +14,9 @@ print(value1)
 
 print('\n'*2)
 print("testing decorator")
-@shutup.shutup
+'''
+
+@shutup.shutup()
 def annoying_decorated():
     print("Blah blah blah")
     sys.stdout.write("Blah Blah Blah")
@@ -21,3 +24,5 @@ def annoying_decorated():
 
 value2 = annoying_decorated()
 print(value2)
+
+'''
