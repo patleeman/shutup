@@ -3,6 +3,17 @@
 
 So, you may be asking yourself: How do I shut this stupid program up?  Here's how:
 
+Installation:
+```
+# cd to your working directory
+git clone https://github.com/patleeman/shutup.git
+cd shutup
+python setup.py install
+
+```
+pypi eventually...
+
+
 As a decorator:
 
 ```python
