@@ -1,3 +1,10 @@
+"""
+shutup.py v. 1.0
+
+Shuts up stupid console output when you want some peace and quiet using all the
+wrong tricks in the book.
+"""
+
 import shutup
 import sys
 import unittest
