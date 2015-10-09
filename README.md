@@ -2,10 +2,12 @@
 ###Shutup.py - Silence annoying console output.
 ####Sometimes you just want some peace and quiet.
 
-Shutup.py helps you tell your console output to chill the fuck out and shut upfor a minute.  
+
+####About:
+Shutup.py helps you tell your console output to shut up for a minute.  
 
 
-Installation:
+####Installation:
 ```
 # cd to your working directory
 git clone https://github.com/patleeman/shutup.git
@@ -13,9 +15,10 @@ cd shutup
 python setup.py install
 
 ```
-pypi eventually...
+*pypi eventually...*
 
 
+#### Usage:
 As a decorator to shut up your stupid functions:
 
 ```python
@@ -67,19 +70,16 @@ print(return_value)
 You can also mute a chunk of code:
         
 ```python
-from shutup import mute, unmute
-
+import shutup
 
 print("Hi, I have something to tell you:")
-mute()
+shutup.mute()
 print("DOING SOMETHING HYUK HYUK")
 does something
 print("YAK YAK YAK YAK")
 print("yak yak yak" * 1000)
-unmute()
+shutup.unmute()
 print("Hi, I'm unmuted!")
-
-
 ```
 
 
