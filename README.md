@@ -29,23 +29,33 @@ annoying_function():
     print("DOING SOMETHING HYUK HYUK")
     does something
     print("YAK YAK YAK YAK")
-    returns something
+    return something
     
 a = annoying_function()
 print(a)
 >>> something
 ```
+*Shutup.py silences sys.stdout.write and print calls*
 
 Shut those hoity toity methods up too...
 
 ```python
+import shutup
+import sys
+
 class derp(object):
+    def __init__():
+        self.value = 2 + 2
+        
     @shutup.method
-    def yammering_decorate_method(self):
+    def let_me_tell_you(self):
         print("I'm a cool method, ")
         sys.stdout.write("totally not a function in a fancy class scarf")
-        return self.output
-
+        return self.value
+        
+instance = derp()
+print(instance.let_me_tell_you())
+>>> 4
 ```
 
 As a context manager:
@@ -80,6 +90,7 @@ print("YAK YAK YAK YAK")
 print("yak yak yak" * 1000)
 shutup.unmute()
 print("Hi, I'm unmuted!")
+>>>Hi, I'm unmuted!
 ```
 
 
