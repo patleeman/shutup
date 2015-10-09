@@ -1,7 +1,9 @@
-# Shutup v 1.0
-####Shut that annoying console output up.  Sometimes you just want some peace and quiet. 
+# Shutup v 1.1
+###Shutup.py - Silence annoying console output.
+####Sometimes you just want some peace and quiet.
 
-So, you may be asking yourself: How do I shut this stupid program up?  Here's how:
+Shutup.py helps you tell your console output to chill the fuck out and shut upfor a minute.  
+
 
 Installation:
 ```
@@ -14,12 +16,12 @@ python setup.py install
 pypi eventually...
 
 
-As a decorator:
+As a decorator to shut up your stupid functions:
 
 ```python
-from shutup import shutup
+import shutup
 
-@shutup
+@shutup.function
 annoying_function():
     print("DOING SOMETHING HYUK HYUK")
     does something
@@ -30,11 +32,23 @@ a = annoying_function()
 print(a)
 >>> something
 ```
-        
+
+Shut those hoity toity methods up too...
+
+```python
+class derp(object):
+    @shutup.method
+    def yammering_decorate_method(self):
+        print("I'm a cool method, ")
+        sys.stdout.write("totally not a function in a fancy class scarf")
+        return self.output
+
+```
+
 As a context manager:
 
 ```python
-from shutup import shutup
+import shutup
 
 annoying_function():
     print("DOING SOMETHING HYUK HYUK")
@@ -42,7 +56,7 @@ annoying_function():
     print("YAK YAK YAK YAK")
     returns something
     
-with shutup:
+with shutup.context():
     return_value = annoying_function()
     
 print(return_value)
@@ -76,7 +90,7 @@ It is not advisable to use this code. **period**.  However, if you insist on usi
 
 ####References:
 * Lots of help from [Stack Overflow](Ripped from http://stackoverflow.com/questions/2828953/silence-the-stdout-of-a-function-in-python-without-trashing-sys-stdout-and-resto)
-* Influenced by [fuckit.py](https://github.com/ajalt/fuckitpy) (Except shutup's code is way shittier)
+* [Influenced](https://gist.github.com/patleeman/e44096f755b6db7b9996) by [fuckit.py](https://github.com/ajalt/fuckitpy) (Except shutup's code is way shittier)
 
 
 ####Bugs:
