@@ -4,7 +4,7 @@
 
 
 ####About:
-Shutup.py helps you tell your console output to shut up for a minute.  
+Shutup.py helps you tell your console output to shut up for a minute.
 
 
 ####Installation:
@@ -25,12 +25,12 @@ As a decorator to shut up your stupid functions:
 import shutup
 
 @shutup.function
-annoying_function():
+def annoying_function():
     print("DOING SOMETHING HYUK HYUK")
-    does something
+    # does something
     print("YAK YAK YAK YAK")
     return something
-    
+
 a = annoying_function()
 print(a)
 >>> something
@@ -46,13 +46,13 @@ import sys
 class derp(object):
     def __init__():
         self.value = 2 + 2
-        
+
     @shutup.method
     def let_me_tell_you(self):
         print("I'm a cool method, ")
         sys.stdout.write("totally not a function in a fancy class scarf")
         return self.value
-        
+
 instance = derp()
 print(instance.let_me_tell_you())
 >>> 4
@@ -63,29 +63,29 @@ As a context manager:
 ```python
 import shutup
 
-annoying_function():
+def annoying_function():
     print("DOING SOMETHING HYUK HYUK")
-    does something
+    # does something
     print("YAK YAK YAK YAK")
-    returns something
-    
+    return something
+
 with shutup.context():
     return_value = annoying_function()
-    
+
 print(return_value)
 >>>something
-```    
+```
 *Shutup does not affect return values, it just puts a muzzle on the console.*
 
 You can also mute a chunk of code:
-        
+
 ```python
 import shutup
 
 print("Hi, I have something to tell you:")
 shutup.mute()
 print("DOING SOMETHING HYUK HYUK")
-does something
+# does something
 print("YAK YAK YAK YAK")
 print("yak yak yak" * 1000)
 shutup.unmute()
